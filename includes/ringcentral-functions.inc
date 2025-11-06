@@ -6,7 +6,7 @@
 /* ================= */
 
 function app_name () {
-    return "SMS FAX Blog Demo App";
+    return "SMS to Multiple Recipients Blog Demo App";
 }
 
 /* ================== */
