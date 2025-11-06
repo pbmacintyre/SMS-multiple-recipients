@@ -30,7 +30,6 @@ function show_form($message, $label = "", $print_again = false) {
                     <hr>
                 </td>
             </tr>
-
             <tr class="CustomTable">
                 <td class="left_col">
                     <p style='display: inline;'>1st Receiving SMS #:</p>
@@ -38,14 +37,16 @@ function show_form($message, $label = "", $print_again = false) {
                 <td class="right_col">
                     <input type="text" name="to_sms_number_1">
                 </td>
-            </tr><tr class="CustomTable">
+            </tr>
+            <tr class="CustomTable">
                 <td class="left_col">
                     <p style='display: inline;'>2nd Receiving SMS #:</p>
                 </td>
                 <td class="right_col">
                     <input type="text" name="to_sms_number_2">
                 </td>
-            </tr><tr class="CustomTable">
+            </tr>
+            <tr class="CustomTable">
                 <td class="left_col">
                     <p style='display: inline;'>3rd Receiving SMS #:</p>
                 </td>
