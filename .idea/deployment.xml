@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="SMS to Multiples Blog article code" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="SMS to Multiple Mobiles" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="SMS to Multiples Blog article code">
+      <paths name="SMS to Multiple Mobiles">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />

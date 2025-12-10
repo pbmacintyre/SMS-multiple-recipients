@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="1cdb8df9-a5e1-46be-bc7f-a11caa12b561" name="SMS to Multiples Blog article code" url="http://ftp.paladin-bs.com">
+      <webServer id="a3e88f6f-b947-4a34-af15-018b6a72033a" name="SMS to Multiple Mobiles" url="http://ftp.paladin-bs.com">
         <fileTransfer rootFolder="/sms_multiple" host="ftp.paladin-bs.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

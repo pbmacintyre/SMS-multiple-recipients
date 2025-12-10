@@ -50,8 +50,11 @@ function send_sms($to_mobiles, $message) {
 
 	$from_mobile = $_ENV['RC_MOBILE_SENDING_NUMBER'];
 
+	$message .= " Reply STOP to opt out of future communication from this mobile number." ;
+	$api_endpoint = '/restapi/v1.0/account/~/extension/~/sms';
+
 	try {
-		$apiResponse = $platform->post('/restapi/v1.0/account/~/extension/~/sms',
+		$apiResponse = $platform->post($api_endpoint,
 			array('from' => array('phoneNumber' => $from_mobile),
 				'to' => $to_mobiles,
 				'text' => $message,)

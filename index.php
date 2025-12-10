@@ -23,7 +23,7 @@ function show_form($message, $print_again = false) {
                     <h2><?php echo app_name(); ?></h2>
                     <?php
                     if ($print_again) {
-                        echo "<p class='msg_bad'>" . $message . "</strong></font>";
+                        echo "<p class='msg_bad'>" . $message . "</p>";
                     } else {
                         echo "<p class='msg_good'>" . $message . "</p>";
                     } ?>
@@ -88,8 +88,6 @@ function check_form() {
     /* ====== START data integrity checks ========= */
     /* ============================================ */
 
-//    $to_sms_number_2 = strip_tags($_POST['to_sms_number_2']);
-//    $to_sms_number_3 = strip_tags($_POST['to_sms_number_3']);
     $sms_message = strip_tags($_POST['sms_message']);
 
     if ($sms_message == "") {
@@ -107,8 +105,8 @@ function check_form() {
     } else {
         $to_sms_numbers = [];
         foreach ($_POST['to_sms_numbers'] as $number) {
-            if ($number != '') {
-                $to_sms_numbers[] = ['phoneNumber' => $number];
+            if (strip_tags($number) != '') {
+                $to_sms_numbers[] = ['phoneNumber' => strip_tags($number)];
             }
         }
     }
@@ -133,7 +131,7 @@ function check_form() {
 if (isset($_POST['send_sms'])) {
     check_form();
 } else {
-    $message = "Please provide the needed information. <br/><br/>";
+    $message = "Please provide the needed information.";
     show_form($message);
 }
 
