@@ -59,7 +59,9 @@ function show_form($message, $print_again = false) {
                     <p style='display: inline;'>SMS Message:</p>
                 </td>
                 <td class="right_col">
-                    <textarea name="sms_message"><?php if ($print_again) { echo strip_tags($_POST['sms_message']); } ?></textarea>
+                    <textarea name="sms_message"><?php if ($print_again) {
+                            echo strip_tags($_POST['sms_message']);
+                        } ?></textarea>
                 </td>
             </tr>
             <tr class="CustomTable">
@@ -95,7 +97,7 @@ function check_form() {
         $message = "No SMS message body has been provided";
     }
 
-    $all_blank = empty(array_filter($_POST['to_sms_numbers'], function($v) {
+    $all_blank = empty(array_filter($_POST['to_sms_numbers'], function ($v) {
         return trim($v) !== '';
     }));
 
@@ -105,9 +107,19 @@ function check_form() {
     } else {
         $to_sms_numbers = [];
         foreach ($_POST['to_sms_numbers'] as $number) {
-            if (strip_tags($number) != '') {
-                $to_sms_numbers[] = ['phoneNumber' => strip_tags($number)];
+            // check for valid phone number format
+            if (preg_match('/^\+1\d{10}$/', strip_tags($number))) {
+                $to_sms_numbers[] = strip_tags($number);
             }
+        }
+        // check for duplicate numbers
+        $seen = [];
+        $filtered_to_numbers = array_values(array_filter($to_sms_numbers, function ($item) use (&$seen) {
+            return !isset($seen[$item]) && ($seen[$item] = true);
+        }));
+        if (count($filtered_to_numbers) == 0) {
+            $print_again = true;
+            $message = "No valid receiving SMS Numbers have been provided";
         }
     }
 
@@ -117,13 +129,11 @@ function check_form() {
     if ($print_again) {
         show_form($message, $print_again);
     } else {
-        send_sms($to_sms_numbers, $sms_message);
+        send_sms($filtered_to_numbers, $sms_message);
         $message = "SMS message has been sent Successfully";
         show_form($message);
     }
-
 }
-
 
 /* ============= */
 /*  --- MAIN --- */
